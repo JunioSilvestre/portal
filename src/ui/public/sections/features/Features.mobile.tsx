@@ -1,3 +1,3 @@
-export const Features.mobile = () => {
-  return <div>Features.mobile</div>;
+export const FeaturesMobile = () => {
+  return <div>FeaturesMobile</div>;
 };

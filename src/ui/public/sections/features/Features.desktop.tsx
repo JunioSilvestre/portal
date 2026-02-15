@@ -1,3 +1,3 @@
-export const Features.desktop = () => {
-  return <div>Features.desktop</div>;
+export const FeaturesDesktop = () => {
+  return <div>FeaturesDesktop</div>;
 };

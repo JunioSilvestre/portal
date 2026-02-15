@@ -1,3 +1,3 @@
-export const Footer.tablet = () => {
-  return <div>Footer.tablet</div>;
+export const FooterTablet = () => {
+  return <div>FooterTablet</div>;
 };

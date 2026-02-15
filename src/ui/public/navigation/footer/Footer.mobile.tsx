@@ -1,3 +1,3 @@
-export const Footer.mobile = () => {
-  return <div>Footer.mobile</div>;
+export const FooterMobile = () => {
+  return <div>FooterMobile</div>;
 };

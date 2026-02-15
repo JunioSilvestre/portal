@@ -1,3 +1,3 @@
-export const Header.tablet = () => {
-  return <div>Header.tablet</div>;
+export const HeaderTablet = () => {
+  return <div>HeaderTablet</div>;
 };

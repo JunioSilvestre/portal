@@ -1,0 +1,158 @@
+/* c:\Projetos\portal\src\ui\public\navigation\header\header.module.css */
+
+/* Base Header Styles */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  transition: all 300ms ease-in-out;
+  border-bottom: 1px solid transparent;
+}
+
+/* --- Scrolled State --- */
+.headerScrolled {
+  background-color: rgba(0, 0, 0, 0.95);
+  /* Black background as requested */
+  backdrop-filter: blur(8px);
+  border-color: rgba(255, 255, 255, 0.1);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  /* Parent text color: White */
+}
+
+/* --- Unscrolled State --- */
+.headerUnscrolled {
+  background-color: #f5f5f5;
+  /* Light grey background as requested */
+  border-color: transparent;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  color: #000;
+  /* Parent text color: Black */
+}
+
+/* Container */
+.headerContainer {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .headerContainer {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* --- Logo Styles --- */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  /* w-10 */
+  height: 2.5rem;
+  /* h-10 */
+  border-radius: 0.5rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  transition: all 300ms ease-in-out;
+  cursor: pointer;
+  z-index: 50;
+}
+
+/* Logo adapts based on parent class */
+.headerScrolled .logo {
+  background-color: transparent;
+  /* Or keep styling if needed */
+  color: #fff;
+  box-shadow: none;
+}
+
+.headerUnscrolled .logo {
+  /* Default logo style if not using the gradient div inside */
+  /* The gradient logic is currently inline in JSX, but we can override or reset here if needed */
+  color: #000;
+  /* The text is inside a colored box, but currently transparent so black text needed */
+}
+
+/* --- Navigation Links --- */
+.desktopNavContainer {
+  display: none;
+  /* Hidden by default (Mobile First) */
+  align-items: center;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .desktopNavContainer {
+    display: flex;
+    /* Show on Desktop */
+  }
+}
+
+.navLinksWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navLink {
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 300ms ease-in-out;
+  text-decoration: none;
+  /* Color is inherited from .headerScrolled/Unscrolled by default */
+  color: inherit;
+}
+
+/* Hover effects */
+.headerUnscrolled .navLink:hover {
+  color: #666;
+  /* Grey hover on light theme */
+}
+
+.headerScrolled .navLink:hover {
+  color: #ccc;
+  /* Light grey hover on dark theme */
+}
+
+/* --- Get Starting Button --- */
+.getStartingButton {
+  padding: 0.625rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 300ms ease-in-out;
+  cursor: pointer;
+  border: none;
+}
+
+/* Button in Unscrolled Header (Light bg -> Black button) */
+.headerUnscrolled .getStartingButton {
+  background-color: #000;
+  color: #fff;
+}
+
+.headerUnscrolled .getStartingButton:hover {
+  background-color: #333;
+}
+
+/* Button in Scrolled Header (Black bg -> White button) */
+.headerScrolled .getStartingButton {
+  background-color: #fff;
+  color: #000;
+}
+
+.headerScrolled .getStartingButton:hover {
+  background-color: #e5e5e5;
+}

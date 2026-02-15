@@ -27,13 +27,12 @@ const nextConfig = {
                 '**/.next/**',
                 '**/out/**',
                 // Arquivos do sistema Windows
+                'C:/*.sys',
+                'C:/*.tmp',
+                'C:/*.log',
                 '**/*.sys',
                 '**/*.tmp',
                 '**/*.log',
-                '**/C:/DumpStack.log.tmp',
-                '**/C:/hiberfil.sys',
-                '**/C:/pagefile.sys',
-                '**/C:/swapfile.sys',
             ],
         }
 
