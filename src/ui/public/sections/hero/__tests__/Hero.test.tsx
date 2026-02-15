@@ -1,6 +1,6 @@
 /**
  * @file Hero.test.tsx
- * @description Testes Unitários para a Seção Hero.
+ * @description Testes Unitários para a Seção Hero (Refined).
  */
 
 import React from 'react';
@@ -19,23 +19,28 @@ jest.mock('framer-motion', () => ({
 describe('Hero Section', () => {
     it('renders the main heading', () => {
         render(<Hero />);
-        // Verifica se o título principal está presente
-        const heading = screen.getByRole('heading', { level: 1, name: /Building Digital Experiences/i });
+        // Verifica se o título principal está presente (Regex flexível para quebra de linha)
+        const heading = screen.getByRole('heading', { level: 1, name: /Intelligence for Modern Business/i });
         expect(heading).toBeInTheDocument();
     });
 
     it('renders the call to action buttons', () => {
         render(<Hero />);
-        // Verifica se os botões existem
-        const getStartedBtn = screen.getByRole('button', { name: /Get Started/i });
-        const viewWorkBtn = screen.getByRole('button', { name: /View Case Studies/i });
+        // Verifica se os botões existem (Start for free / Learn more)
+        const startBtn = screen.getByRole('button', { name: /Start for free/i });
+        const learnBtn = screen.getByRole('button', { name: /Learn more/i });
 
-        expect(getStartedBtn).toBeInTheDocument();
-        expect(viewWorkBtn).toBeInTheDocument();
+        expect(startBtn).toBeInTheDocument();
+        expect(learnBtn).toBeInTheDocument();
     });
 
-    it('renders the welcome badge', () => {
+    it('renders the welcome/new badge', () => {
         render(<Hero />);
-        expect(screen.getByText(/Welcome to the Future/i)).toBeInTheDocument();
+        expect(screen.getByText(/Portal v2.0 is now live/i)).toBeInTheDocument();
+    });
+
+    it('renders the dashboard preview', () => {
+        render(<Hero />);
+        expect(screen.getByText(/Interactive Dashboard UI/i)).toBeInTheDocument();
     });
 });

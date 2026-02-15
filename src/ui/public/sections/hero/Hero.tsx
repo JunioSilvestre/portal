@@ -1,83 +1,96 @@
 /**
  * @file Hero.tsx
- * @description Componente da Seção Hero (Destaque Inicial).
+ * @description Componente da Seção Hero (Refinado).
  * @author Senior Engineer Logic
  * 
- * Funcionalidades:
- * 1. Design Impactante: Título grande, gradientes e elementos flutuantes (Blobs).
- * 2. CTA Claro: Botões de ação principal ("Get Started") e secundária ("View Work").
- * 3. Responsivo: Ajusta tamanho de fonte e layout para mobile/desktop.
- * 4. Acessibilidade: Uso semântico de <section> e <h1>.
+ * Atualizações:
+ * 1. Estilo "Big Tech" Clean (Fundo claro, tipografia suíça).
+ * 2. Visual "Mockup" de Dashboard para tangibilizar o produto.
+ * 3. Cores neutras e profissionais.
  */
 
-'use client'; // Necessário para interatividade (se houver) e animações futuras
+'use client';
 
 import Link from 'next/link';
 import styles from './hero.module.css';
-import { motion } from 'framer-motion'; // Vamos adicionar um pouco de "tempero" com animação de entrada
+import { motion } from 'framer-motion';
 
 export const Hero = () => {
   return (
     <section className={styles.heroContainer} aria-label="Introduction">
-      {/* Elementos Visuais de Fundo (Blobs e Overlay) */}
+      {/* Background Sutil */}
       <div className={styles.backgroundOverlay} />
       <div className={`${styles.decorationBlob} ${styles.blob1}`} />
       <div className={`${styles.decorationBlob} ${styles.blob2}`} />
 
-      {/* Conteúdo Principal (Texto e CTAs) */}
       <div className={styles.content}>
 
-        {/* Badge Animado */}
+        {/* Badge "New" */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className={styles.badge}
         >
-          🚀 Welcome to the Future using Next.js 14
+          <span className="mr-2">🎉</span>
+          <span className="font-semibold text-black">New:</span> &nbsp; Portal v2.0 is now live
         </motion.div>
 
-        {/* Título Principal */}
+        {/* Título */}
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className={styles.title}
         >
-          Building Digital Experiences <br />
-          That Matter.
+          Intelligence for <br />
+          Modern Business.
         </motion.h1>
 
         {/* Subtítulo */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className={styles.subtitle}
         >
-          We craft premium web applications with a focus on performance,
-          accessibility, and stunning aesthetics. Let&apos;s build something amazing together.
+          Experience the next generation of business management.
+          Powerful, intuitive, and designed to help you scale effortlessly.
         </motion.p>
 
-        {/* Botões de Ação (CTAs) */}
+        {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           className={styles.ctaGroup}
         >
           <Link href="/get-starting">
             <button className={styles.primaryButton}>
-              Get Started
+              Start for free
             </button>
           </Link>
 
-          <Link href="/#works">
+          <Link href="/#about">
             <button className={styles.secondaryButton}>
-              View Case Studies
+              Learn more
             </button>
           </Link>
         </motion.div>
+
+        {/* Dashboard Visual Mockup */}
+        <motion.div
+          initial={{ opacity: 0, y: 40, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className={styles.dashboardPreview}
+        >
+          <div className={styles.mockupContent}>
+            {/* Simulação de Interface (Pode ser uma imagem real aqui) */}
+            <span>Interactive Dashboard UI</span>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );

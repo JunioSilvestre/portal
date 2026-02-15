@@ -1,13 +1,14 @@
 /**
  * @file about.module.css
- * @description Estilos para a Seção Sobre Nós (About).
+ * @description Estilos para a Seção Sobre Nós (Refined - Rich Cards).
  */
 
 .aboutContainer {
     width: 100%;
-    padding: 6rem 1.5rem;
-    background-color: #f5f5f5;
-    /* Fundo claro para contraste com o Hero */
+    padding: 4rem 1.5rem;
+    /* Altura reduzida (era 6rem) */
+    background-color: #ffffff;
+    /* Fundo branco para diferenciar do Hero #f5f5f5 */
     color: #171717;
     display: flex;
     justify-content: center;
@@ -18,113 +19,134 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 3rem;
 }
 
-/* Header da Seção */
+/* Header */
 .sectionHeader {
     text-align: center;
-    margin-bottom: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .sectionTitle {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    color: #000;
+    color: #171717;
 }
 
 .sectionSubtitle {
     font-size: 1.125rem;
     color: #525252;
-    max-width: 600px;
-    margin: 0 auto;
     line-height: 1.6;
 }
 
-/* Timeline Layout */
-.timelineGrid {
+/* Grid de Cards Ricos */
+.cardsGrid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 @media (min-width: 768px) {
-    .timelineGrid {
-        grid-template-columns: repeat(2, 1fr);
-        align-items: flex-start;
+    .cardsGrid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* Cards de Timeline */
-.card {
-    background: #ffffff;
+/* Rich Card */
+.richCard {
+    background: #f9fafb;
+    /* Cinza muito suave */
+    border: 1px solid #e5e5e5;
     border-radius: 1rem;
-    padding: 2rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 1.5rem;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+.richCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    border-color: #d4d4d4;
+    background: #ffffff;
 }
 
-.cardYear {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #2563eb;
-    /* Azul Destaque */
-    margin-bottom: 0.5rem;
-    display: block;
+/* Mini Chart Visuals */
+.chartPlaceholder {
+    height: 80px;
+    background: #ffffff;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e5e5;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding: 0.5rem;
+    overflow: hidden;
 }
 
+.bar {
+    width: 12%;
+    background-color: #e5e5e5;
+    border-radius: 2px;
+    transition: height 0.5s ease;
+}
+
+.richCard:hover .bar {
+    background-color: #3b82f6;
+    /* Blue on hover */
+}
+
+/* Mini Table Visuals */
+.tablePlaceholder {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    background: #ffffff;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e5e5;
+}
+
+.tableRow {
+    height: 8px;
+    width: 100%;
+    background-color: #f3f4f6;
+    border-radius: 2px;
+}
+
+.tableRow:first-child {
+    background-color: #e5e5e5;
+    /* Header row darker */
+    width: 60%;
+}
+
+/* Card Content */
 .cardTitle {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 600;
-    margin-bottom: 0.75rem;
+    color: #171717;
 }
 
-.cardText {
-    color: #525252;
-    line-height: 1.6;
-}
-
-/* Stats Counter */
-.statsContainer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin-top: 2rem;
-    padding: 3rem;
-    background-color: #171717;
-    border-radius: 2rem;
-    color: #ffffff;
-}
-
-@media (min-width: 768px) {
-    .statsContainer {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-.statItem {
-    text-align: center;
-}
-
-.statNumber {
-    font-size: 3rem;
-    font-weight: 800;
-    display: block;
-    line-height: 1;
-    margin-bottom: 0.5rem;
-    color: #3b82f6;
-    /* Azul claro vibrante */
-}
-
-.statLabel {
+.cardDescription {
     font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #a3a3a3;
+    color: #525252;
+    line-height: 1.5;
+}
+
+/* Ícone do Card */
+.iconBox {
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #171717;
+    margin-bottom: 0.5rem;
 }

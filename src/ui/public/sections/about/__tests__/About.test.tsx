@@ -1,6 +1,6 @@
 /**
  * @file About.test.tsx
- * @description Testes Unitários para a Seção About.
+ * @description Testes Unitários para a Seção About (Refined).
  */
 
 import React from 'react';
@@ -14,22 +14,28 @@ jest.mock('framer-motion', () => ({
     },
 }));
 
+// Mock Lucide Icons (já que são usados no componente)
+jest.mock('lucide-react', () => ({
+    BarChart3: () => <svg data-testid="icon-analytics" />,
+    Users: () => <svg data-testid="icon-users" />,
+    Zap: () => <svg data-testid="icon-zap" />,
+}));
+
 describe('About Section', () => {
     it('renders the section title', () => {
         render(<About />);
-        expect(screen.getByText('Our Journey')).toBeInTheDocument();
+        expect(screen.getByText('Built for Scale')).toBeInTheDocument();
     });
 
-    it('renders usage statistics', () => {
+    it('renders the rich cards with titles', () => {
         render(<About />);
-        // Verifica se alguns números estatísticos estão presentes
-        expect(screen.getByText('150+')).toBeInTheDocument();
-        expect(screen.getByText('98%')).toBeInTheDocument();
+        expect(screen.getByText('Real-time Analytics')).toBeInTheDocument();
+        expect(screen.getByText('Team Management')).toBeInTheDocument();
+        expect(screen.getByText('Lightning Fast')).toBeInTheDocument();
     });
 
-    it('renders timeline items', () => {
+    it('renders the descriptive text', () => {
         render(<About />);
-        expect(screen.getByText('Founded')).toBeInTheDocument();
-        expect(screen.getByText('Global Expansion')).toBeInTheDocument();
+        expect(screen.getByText(/Our platform processes millions of data points/i)).toBeInTheDocument();
     });
 });

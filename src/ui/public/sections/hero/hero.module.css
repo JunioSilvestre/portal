@@ -1,63 +1,64 @@
 /**
  * @file hero.module.css
- * @description Estilos para a Seção Hero (Banner Principal).
+ * @description Estilos para a Seção Hero (Refined - Neutral/Big Tech Style).
  */
 
-/* Container Principal - Altura total da tela menos o header */
+/* Container Principal */
 .heroContainer {
     position: relative;
     width: 100%;
-    min-height: 100vh;
-    /* Ocupa a tela toda */
+    min-height: 85vh;
+    /* Altura ligeiramente reduzida conforme solicitado */
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background-color: #0a0a0a;
-    /* Fundo de fallback escuro */
-    color: #ffffff;
+    background-color: #f5f5f5;
+    /* Fundo claro neutro */
+    color: #171717;
+    /* Texto escuro */
     padding-top: 80px;
-    /* Compensar o Header fixo */
 }
 
-/* Background com Gradiente ou Imagem */
+/* Background Sutil */
 .backgroundOverlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+    /* Gradiente muito sutil para dar profundidade sem ser escuro */
+    background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f5f5f5 100%);
     z-index: 1;
 }
 
-/* Elementos Decorativos de Fundo (Blur Blobs) */
+/* Elementos Decorativos (Blobs mais sutis) */
 .decorationBlob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.4;
+    filter: blur(100px);
+    opacity: 0.15;
+    /* Muito mais sutil */
     z-index: 2;
     animation: float 10s infinite ease-in-out;
 }
 
 .blob1 {
-    top: 20%;
-    left: 10%;
-    width: 300px;
-    height: 300px;
-    background-color: #4f46e5;
-    /* Índigo */
-    animation-delay: 0s;
+    top: -10%;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background-color: #3b82f6;
+    /* Azul corporativo */
 }
 
 .blob2 {
-    bottom: 20%;
-    right: 10%;
-    width: 400px;
-    height: 400px;
-    background-color: #9333ea;
-    /* Roxo */
+    bottom: -10%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background-color: #8b5cf6;
+    /* Roxo suave */
     animation-delay: -5s;
 }
 
@@ -65,93 +66,120 @@
 .content {
     position: relative;
     z-index: 10;
-    /* Acima do fundo */
     text-align: center;
-    max-width: 900px;
+    max-width: 1000px;
     padding: 0 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
-/* Badge / Tag no topo */
+/* Badge / Tag "New" Style */
 .badge {
-    display: inline-block;
-    padding: 0.5rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1.25rem;
     border-radius: 9999px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
     font-size: 0.875rem;
     font-weight: 500;
-    backdrop-filter: blur(10px);
-    margin-bottom: 1rem;
-    color: #e5e7eb;
+    color: #4b5563;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    margin-bottom: 0.5rem;
 }
 
-/* Título Principal Impactante */
+/* Título Principal Clean & Bold */
 .title {
-    font-size: 3.5rem;
-    /* Grande em desktop */
+    font-size: 4rem;
     font-weight: 800;
     line-height: 1.1;
-    letter-spacing: -0.02em;
-    background: linear-gradient(to right, #ffffff, #a5a5a5);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.03em;
+    color: #171717;
     margin: 0;
 }
 
 /* Subtítulo */
 .subtitle {
     font-size: 1.25rem;
-    color: #d1d5db;
-    /* Cinza claro */
+    color: #525252;
     line-height: 1.6;
-    max-width: 600px;
+    max-width: 650px;
 }
 
 /* Grupo de Botões (CTA) */
 .ctaGroup {
     display: flex;
     gap: 1rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
+    margin-top: 1rem;
     justify-content: center;
 }
 
 .primaryButton {
-    background-color: #ffffff;
-    color: #000000;
-    padding: 0.75rem 2rem;
-    border-radius: 0.5rem;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0.875rem 2.5rem;
+    border-radius: 9999px;
+    /* Pill shape */
     font-weight: 600;
     font-size: 1rem;
-    transition: transform 0.2s ease, background-color 0.2s;
+    transition: transform 0.2s ease, box-shadow 0.2s;
     border: none;
     cursor: pointer;
 }
 
 .primaryButton:hover {
     transform: translateY(-2px);
-    background-color: #f3f4f6;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 .secondaryButton {
     background-color: transparent;
-    color: #ffffff;
-    padding: 0.75rem 2rem;
-    border-radius: 0.5rem;
+    color: #171717;
+    padding: 0.875rem 2.5rem;
+    border-radius: 9999px;
     font-weight: 600;
     font-size: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid #e5e5e5;
     transition: background-color 0.2s;
     cursor: pointer;
 }
 
 .secondaryButton:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #ffffff;
+    border-color: #d4d4d4;
+}
+
+/* Visual Dashboard Mockup */
+.dashboardPreview {
+    margin-top: 4rem;
+    width: 100%;
+    max-width: 900px;
+    height: 400px;
+    background: #ffffff;
+    border-radius: 1.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    /* Sombra "Apple-like" */
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mockupContent {
+    width: 90%;
+    height: 90%;
+    background: #f9fafb;
+    border-radius: 1rem;
+    border: 1px dashed #e5e5e5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    font-weight: 500;
 }
 
 /* Animação Keyframes */
@@ -169,17 +197,19 @@
     }
 }
 
-/* Responsividade Mobile */
+/* Responsividade */
 @media (max-width: 768px) {
     .title {
         font-size: 2.5rem;
     }
 
-    .blob1,
-    .blob2 {
-        opacity: 0.3;
-        /* Menos intenso em mobile */
-        width: 200px;
-        height: 200px;
+    .heroContainer {
+        min-height: auto;
+        padding-bottom: 4rem;
+    }
+
+    .dashboardPreview {
+        height: 250px;
+        margin-top: 2rem;
     }
 }
