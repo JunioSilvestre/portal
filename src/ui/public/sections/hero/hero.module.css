@@ -7,8 +7,8 @@
 .heroContainer {
     position: relative;
     width: 100%;
-    min-height: 90vh;
-    /* Restore height for impact */
+    min-height: auto;
+    /* Remove fixed height constraint */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,7 +16,9 @@
     background-color: #f5f5f5;
     /* Fundo claro neutro / degradê sutil mantido */
     color: #171717;
-    padding-top: 120px;
+    /* Texto escuro */
+    padding: 120px 1.5rem 4rem 1.5rem;
+    /* Top 120px for header, rest matches Contact */
 }
 
 /* Background Sutil */
