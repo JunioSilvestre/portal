@@ -1,13 +1,13 @@
 /**
  * @file Hero.test.tsx
- * @description Testes Unitários para a Seção Hero (Refined).
+ * @description Testes Unitários para a Seção Hero (Corporate Finance).
  */
 
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Hero } from '../Hero';
 
-// Mock do framer-motion para evitar erros de animação no JSDOM
+// Mock do framer-motion
 jest.mock('framer-motion', () => ({
     motion: {
         div: ({ children, className }: { children: React.ReactNode; className?: string }) => <div className={className}>{children}</div>,
@@ -19,28 +19,29 @@ jest.mock('framer-motion', () => ({
 describe('Hero Section', () => {
     it('renders the main heading', () => {
         render(<Hero />);
-        // Verifica se o título principal está presente (Regex flexível para quebra de linha)
-        const heading = screen.getByRole('heading', { level: 1, name: /Intelligence for Modern Business/i });
+        const heading = screen.getByRole('heading', { level: 1, name: /Assessoria Financeira/i });
         expect(heading).toBeInTheDocument();
     });
 
     it('renders the call to action buttons', () => {
         render(<Hero />);
-        // Verifica se os botões existem (Start for free / Learn more)
-        const startBtn = screen.getByRole('button', { name: /Start for free/i });
-        const learnBtn = screen.getByRole('button', { name: /Learn more/i });
+        const proposalBtn = screen.getByRole('button', { name: /Solicitar Proposta/i });
+        const talkBtn = screen.getByRole('button', { name: /Falar com Time/i });
 
-        expect(startBtn).toBeInTheDocument();
-        expect(learnBtn).toBeInTheDocument();
+        expect(proposalBtn).toBeInTheDocument();
+        expect(talkBtn).toBeInTheDocument();
     });
 
-    it('renders the welcome/new badge', () => {
+    it('renders the metrics card', () => {
         render(<Hero />);
-        expect(screen.getByText(/Portal v2.0 is now live/i)).toBeInTheDocument();
+        expect(screen.getByText(/R\$ 3Bi\+/i)).toBeInTheDocument();
+        expect(screen.getByText(/Sob Gestão/i)).toBeInTheDocument();
+        expect(screen.getByText(/AAA/i)).toBeInTheDocument();
     });
 
-    it('renders the dashboard preview', () => {
+    it('renders certification badges', () => {
         render(<Hero />);
-        expect(screen.getByText(/Interactive Dashboard UI/i)).toBeInTheDocument();
+        expect(screen.getByText(/Certificado CVM/i)).toBeInTheDocument();
+        expect(screen.getByText(/Auditado SOC2/i)).toBeInTheDocument();
     });
 });

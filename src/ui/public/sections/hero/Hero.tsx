@@ -1,12 +1,12 @@
 /**
  * @file Hero.tsx
- * @description Componente da Seção Hero (Refinado).
+ * @description Componente da Seção Hero (Corporate Finance Style).
  * @author Senior Engineer Logic
  * 
  * Atualizações:
- * 1. Estilo "Big Tech" Clean (Fundo claro, tipografia suíça).
- * 2. Visual "Mockup" de Dashboard para tangibilizar o produto.
- * 3. Cores neutras e profissionais.
+ * 1. Conteúdo focado em "Assessoria Financeira".
+ * 2. Visual corporativo com cards brancos e métricas de impacto.
+ * 3. Elementos de confiança (CVM, SOC2).
  */
 
 'use client';
@@ -14,6 +14,7 @@
 import Link from 'next/link';
 import styles from './hero.module.css';
 import { motion } from 'framer-motion';
+import { Lock, BadgeCheck } from 'lucide-react';
 
 export const Hero = () => {
   return (
@@ -25,38 +26,54 @@ export const Hero = () => {
 
       <div className={styles.content}>
 
-        {/* Badge "New" */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className={styles.badge}
-        >
-          <span className="mr-2">🎉</span>
-          <span className="font-semibold text-black">New:</span> &nbsp; Portal v2.0 is now live
-        </motion.div>
-
         {/* Título */}
         <motion.h1
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          transition={{ duration: 0.5 }}
           className={styles.title}
         >
-          Intelligence for <br />
-          Modern Business.
+          Assessoria Financeira <br />
+          Estratégica
         </motion.h1>
 
         {/* Subtítulo */}
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
           className={styles.subtitle}
         >
-          Experience the next generation of business management.
-          Powerful, intuitive, and designed to help you scale effortlessly.
+          Soluções corporativas para otimização de capital,
+          gestão de riscos e planejamento financeiro de alta performance.
         </motion.p>
+
+        {/* Metrics Card (White Box) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className={styles.metricsCard}
+        >
+          <div className={styles.metricItem}>
+            <span className={styles.metricValue}>R$ 3Bi+</span>
+            <span className={styles.metricLabel}>Sob Gestão</span>
+          </div>
+
+          <div className={styles.metricDivider} />
+
+          <div className={styles.metricItem}>
+            <span className={styles.metricValue}>25</span>
+            <span className={styles.metricLabel}>Anos de Mercado</span>
+          </div>
+
+          <div className={styles.metricDivider} />
+
+          <div className={styles.metricItem}>
+            <span className={styles.metricValue}>AAA</span>
+            <span className={styles.metricLabel}>Rating Global</span>
+          </div>
+        </motion.div>
 
         {/* CTAs */}
         <motion.div
@@ -65,29 +82,34 @@ export const Hero = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className={styles.ctaGroup}
         >
-          <Link href="/get-starting">
+          <Link href="/contact">
             <button className={styles.primaryButton}>
-              Start for free
+              Solicitar Proposta
             </button>
           </Link>
 
           <Link href="/#about">
             <button className={styles.secondaryButton}>
-              Learn more
+              Falar com Time
             </button>
           </Link>
         </motion.div>
 
-        {/* Dashboard Visual Mockup */}
+        {/* Certifications Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 40, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className={styles.dashboardPreview}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className={styles.certifications}
         >
-          <div className={styles.mockupContent}>
-            {/* Simulação de Interface (Pode ser uma imagem real aqui) */}
-            <span>Interactive Dashboard UI</span>
+          <div className={styles.certItem}>
+            <BadgeCheck size={16} />
+            <span>Certificado CVM</span>
+          </div>
+          <div style={{ width: 4, height: 4, borderRadius: '50%', background: '#cbd5e1' }}></div>
+          <div className={styles.certItem}>
+            <Lock size={16} />
+            <span>Auditado SOC2</span>
           </div>
         </motion.div>
 
