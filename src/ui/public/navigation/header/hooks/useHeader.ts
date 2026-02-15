@@ -1,99 +1,117 @@
 /**
  * @file useHeader.ts
- * @description Custom hook for Header logic. Handles scroll detection and state management.
- * @usage Used in `Header.tsx` to control layout and style variants.
+ * @description Hook Customizado (Custom Hook) para a Lógica do Cabeçalho.
+ * @author Senior Engineer Logic
  * 
- * @senior_improvements
- * 1. Performance: Debounce or Throttle the `scroll` event listener to reduce main thread work (e.g., using `lodash.throttle` or a custom utility).
- * 2. UX: Implement `scrollDirection` detection (up/down) to hide the header when scrolling down and show it when scrolling up (Smart Hide).
- * 3. Reusability: Accept a `threshold` argument (currently hardcoded to 50px) to make the hook more flexible for different pages.
- * 4. Context: If header state needs to be accessed by other components (e.g., a Sidebar), consider moving this state to a React Context.
+ * Por que criar um Hook?
+ * Para separar a LÓGICA (estado, efeitos, regras) da APRESENTAÇÃO (JSX, CSS).
+ * Isso torna o componente visual mais limpo e a lógica mais testável e reutilizável.
+ * 
+ * Responsabilidades:
+ * 1. Monitorar o Scroll da janela (para efeitos visuais).
+ * 2. Controlar o abrir/fechar do Menu Mobile.
+ * 3. Gerenciar o timer de inatividade (fechar menu automaticamente).
  */
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 
 export const useHeader = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    // --- ESTADOS (State) ---
+    // useState: Guarda valores que, quando mudam, causam uma re-renderização do componente.
+    const [isScrolled, setIsScrolled] = useState(false); // True se rolou > 50px
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // True se menu lateral aberto
 
-    // --- Auto-close Timer Ref ---
-    // Stores the timer ID to clear it on unmount or interaction
+    // --- REFS (Referência Mutável) ---
+    // useRef: Guarda valores que persistem entre renderizações MAS NÃO causam re-render visual.
+    // Perfeito para guardar IDs de timers, elementos DOM, ou valores "invisíveis".
     const autoCloseTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-    // --- Scroll Detection (Throttled) ---
+    // --- EFEITO 1: Detecção de Scroll Otimizada ---
     useEffect(() => {
-        let ticking = false;
+        let ticking = false; // Flag para controlar o Throttling (evitar execuções excessivas)
 
         const handleScroll = () => {
+            // Se já existe um pedido de atualização agendado, ignoramos novos eventos de scroll
+            // até que o navegador desenhe o quadro atual.
             if (!ticking) {
                 window.requestAnimationFrame(() => {
+                    // Lógica real: verifica se o scroll Y é maior que 50 pixels
                     setIsScrolled(window.scrollY > 50);
-                    ticking = false;
+                    ticking = false; // Libera a flag para o próximo quadro
                 });
-                ticking = true;
+                ticking = true; // Bloqueia novas execuções imediatas
             }
         };
 
+        // Adiciona o ouvinte ao evento 'scroll' da janela
         window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [setIsScrolled]);
 
-    // --- Mobile Menu Actions ---
+        // Cleanup Function: Sempre remova listeners ao desmontar o componente!
+        // Evita erros e memory leaks quando o usuário muda de página.
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [setIsScrolled]); // Dependência: recria o efeito apenas se setIsScrolled mudar (o que é raro/nunca acontece para setState)
+
+    // --- AÇÕES DO MENU (Actions) ---
+    // useCallback: Memoriza a função. Ela não é recriada em toda renderização, 
+    // a menos que suas dependências mudem. Essencial quando passamos funções para useEffect ou filhos.
+
+    // Ação: Fechar Menu
     const closeMobileMenu = useCallback(() => setIsMobileMenuOpen(false), []);
 
+    // Ação: Alternar Menu (Toggle)
     const toggleMobileMenu = useCallback(() => setIsMobileMenuOpen((prev) => !prev), []);
 
     /**
-     * Resets the 10-second auto-close timer.
-     * Should be called on any user interaction within the menu.
+     * Reseta o temporizador de auto-fechamento (10 segundos).
+     * Deve ser chamado sempre que o usuário toca ou move o mouse no menu.
      */
     const resetAutoCloseTimer = useCallback(() => {
+        // Se já existe um timer rodando, cancela ele antes de criar um novo.
         if (autoCloseTimerRef.current) clearTimeout(autoCloseTimerRef.current);
-        // We only want to set the timer if the menu is actually open.
-        // However, checking isMobileMenuOpen here might cause dependency cycles if not careful.
-        // A ref can track the open state if needed, or we just trust the caller.
-        // In this specific flow, we check state inside the effect or rely on the fact 
-        // that this is called when interaction happens.
 
-        // Use a ref to access the latest state without triggering re-renders of the function?
-        // Or simpler: just standard dependency.
+        // Só agendamos o timer se o menu estiver realmente aberto.
         if (isMobileMenuOpen) {
             autoCloseTimerRef.current = setTimeout(() => {
                 console.log('Auto-closing mobile menu due to inactivity.');
-                closeMobileMenu();
-            }, 10000); // 10 seconds
+                closeMobileMenu(); // Chama a ação de fechar
+            }, 10000); // 10000ms = 10 segundos
         }
-    }, [isMobileMenuOpen, closeMobileMenu]);
+    }, [isMobileMenuOpen, closeMobileMenu]); // Dependências: precisa saber o estado atual e ter a função de fechar.
 
-    // --- Mobile Menu Logic ---
+    // --- EFEITO 2: Gestão do Menu Mobile (Side Effects) ---
     useEffect(() => {
         if (isMobileMenuOpen) {
-            // 1. Lock Body Scroll
+            // 1. Bloqueia o Scroll da página principal (Body Lock)
+            // Impede que o fundo role enquanto o usuário tenta rolar o menu.
             document.body.style.overflow = 'hidden';
 
-            // 2. Start Auto-close Timer (10s of inactivity)
+            // 2. Inicia o Timer de Segurança
             resetAutoCloseTimer();
 
-            // 3. Add Escape Key Listener
+            // 3. Ouve a tecla ESC para acessibilidade (fechar via teclado)
             const handleEsc = (e: KeyboardEvent) => {
                 if (e.key === 'Escape') closeMobileMenu();
             };
             window.addEventListener('keydown', handleEsc);
 
+            // Cleanup Function (Executa ao fechar o menu ou desmontar)
             return () => {
-                // Cleanup: Unlock scroll, clear timer, remove listener
+                // Restaura o scroll da página
                 document.body.style.overflow = '';
+                // Limpa o timer pendente
                 if (autoCloseTimerRef.current) clearTimeout(autoCloseTimerRef.current);
+                // Remove o listener de teclado
                 window.removeEventListener('keydown', handleEsc);
             };
         }
-    }, [isMobileMenuOpen, resetAutoCloseTimer, closeMobileMenu]);
+    }, [isMobileMenuOpen, resetAutoCloseTimer, closeMobileMenu]); // Dependências completas
 
+    // Retorna (Expoe) apenas o necessário para a View (Componente JSX)
     return {
         isScrolled,
         isMobileMenuOpen,
         toggleMobileMenu,
         closeMobileMenu,
-        resetAutoCloseTimer, // Exposed for component interaction
+        resetAutoCloseTimer,
     };
 };

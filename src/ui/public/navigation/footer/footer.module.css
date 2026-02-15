@@ -1,0 +1,83 @@
+/**
+ * @file footer.module.css
+ * @description Estilos Desktop para o Footer.
+ * Usa CSS Modules para evitar conflitos de nomes.
+ */
+
+/* Container Principal do Footer Desktop */
+.footerContainer {
+    width: 100%;
+    background-color: #000000;
+    /* Fundo Preto como solicitado */
+    color: #ffffff;
+    /* Texto Branco */
+    padding: 3rem 1rem;
+    /* Espaçamento interno */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid #333;
+    /* Linha sutil no topo para separar do conteúdo */
+}
+
+/* Área de Conteúdo Centralizado */
+.contentWrapper {
+    width: 100%;
+    max-width: 1440px;
+    /* Limite de largura igual ao header */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 2rem;
+}
+
+/* Texto de Copyright */
+.copyright {
+    font-size: 0.875rem;
+    /* 14px */
+    color: #888888;
+    /* Cinza suave */
+}
+
+/* Créditos do Desenvolvedor */
+.developer {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+/* Lista de Ícones Sociais */
+.socialList {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+/* Links Sociais (Ícones) */
+.socialLink {
+    color: #ffffff;
+    /* Branco original */
+    transition: color 0.3s ease, transform 0.2s ease;
+    /* Animação suave */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.socialLink:hover {
+    transform: translateY(-2px);
+    /* Efeito de elevação leve */
+    /* A mudança de cor será injetada via style inline no JSX para suportar cores dinâmicas */
+}
+
+/* Ocultar em Mobile (breakpoint md do Tailwind é 768px, aqui usamos media query padrão) */
+@media (max-width: 768px) {
+    .footerContainer {
+        display: none;
+    }
+}

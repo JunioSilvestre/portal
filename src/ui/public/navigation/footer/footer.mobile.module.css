@@ -1,0 +1,63 @@
+/**
+ * @file footer.mobile.module.css
+ * @description Estilos Mobile para o Footer.
+ * Focado em layout vertical e áreas de toque maiores.
+ */
+
+/* Container Principal Mobile */
+.mobileFooterContainer {
+    width: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    /* Espaço entre os blocos verticalmente */
+    border-top: 1px solid #333;
+    text-align: center;
+}
+
+/* Lista de Ícones Sociais Mobile */
+.socialList {
+    display: flex;
+    gap: 2rem;
+    /* Mais espaço para dedos */
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.socialLink {
+    color: #ffffff;
+    transition: transform 0.2s ease;
+    padding: 0.5rem;
+    /* Área de toque maior */
+}
+
+.socialLink:active {
+    transform: scale(0.95);
+    /* Feedback tátil ao tocar */
+}
+
+/* Bloco de Texto (Copyright + Dev) */
+.textBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    /* 12px */
+    color: #888888;
+}
+
+.developer {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Ocultar em Desktop */
+@media (min-width: 769px) {
+    .mobileFooterContainer {
+        display: none;
+    }
+}
