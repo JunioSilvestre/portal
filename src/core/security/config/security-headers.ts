@@ -4,6 +4,43 @@
  * @author Senior Engineer Logic
  */
 
+/**
+ * ============================================================================
+ * FILE: security-headers.ts
+ * LAYER: core
+ * TYPE: config
+ * ============================================================================
+ *
+ * PURPOSE:
+ * -> Define strict Content Security Policy (CSP), HSTS, and other HTTP security headers.
+ * -> Protect the application against XSS, Clickjacking, and other browser-based attacks.
+ *
+ * RESPONSIBILITY:
+ * -> Centralize all security header definitions.
+ * -> Ensure compliance with security best practices (e.g., OWASP).
+ *
+ * ARCHITECTURE POSITION:
+ * -> Imported by middleware.ts to inject headers into every response.
+ *
+ * DATA FLOW:
+ * -> Config -> Middleware -> HTTP Response Headers.
+ *
+ * SECURITY:
+ * -> CRITICAL: Defines the rules used by the browser to allow/block content.
+ * -> Misconfiguration here can break the app or leave it vulnerable.
+ *
+ * PERFORMANCE:
+ * -> Static configuration, zero runtime overhead.
+ *
+ * IMPROVEMENTS:
+ * -> CSP might need updates as third-party scripts are added.
+ *
+ * STATUS:
+ * -> Stable
+ *
+ * ============================================================================
+ */
+
 export const SECURITY_HEADERS = {
     // Content Security Policy
     // Allows scripts from verified sources (analytics, etc.)

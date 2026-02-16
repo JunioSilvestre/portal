@@ -1,7 +1,38 @@
 /**
- * @file sanitization.ts
- * @description Input sanitization utilities to prevent XSS/Injection.
- * @author Senior Engineer Logic
+ * ============================================================================
+ * FILE: sanitization.ts
+ * LAYER: core
+ * TYPE: validation
+ * ============================================================================
+ *
+ * PURPOSE:
+ * -> Core logic for string sanitization (HTML escaping).
+ * -> Recursively sanitize objects to ensure deep cleaning.
+ *
+ * RESPONSIBILITY:
+ * -> Escape HTML entities (&, <, >, ", ').
+ * -> Traverse objects to sanitize all string values.
+ *
+ * ARCHITECTURE POSITION:
+ * -> Low-level utility used by XSS protection and other modules.
+ *
+ * DATA FLOW:
+ * -> String -> [Replace Regex] -> Safe String.
+ *
+ * SECURITY:
+ * -> CRITICAL: The actual implementation of the sanitization mechanism.
+ *
+ * PERFORMANCE:
+ * -> Regex replacement is fast.
+ * -> Object traversal complexity depends on object depth.
+ *
+ * IMPROVEMENTS:
+ * -> Use a compiled library for more robust HTML stripping if needed.
+ *
+ * STATUS:
+ * -> Stable
+ *
+ * ============================================================================
  */
 
 // import { escape } from 'querystring';

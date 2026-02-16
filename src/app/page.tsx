@@ -1,11 +1,43 @@
 /**
- * @file page.tsx
- * @description Página Inicial (Landing Page) da Aplicação.
- * @author Senior Engineer Logic
+ * ============================================================================
+ * FILE: page.tsx
+ * LAYER: app
+ * TYPE: page
+ * ============================================================================
+ *
+ * PURPOSE:
+ * -> Home Page / Landing Page.
+ * -> The primary entry point for visitors.
+ *
+ * RESPONSIBILITY:
+ * -> Compose the main sections (Hero, About, Works, Contact).
+ * -> Define the scroll order.
+ *
+ * ARCHITECTURE POSITION:
+ * -> Rendered inside the Root Layout.
+ *
+ * DATA FLOW:
+ * -> Static composition of components.
+ *
+ * SECURITY:
+ * -> Public page.
+ *
+ * PERFORMANCE:
+ * -> Server Component (default).
+ * -> Sections can be lazy-loaded or client components if interactive.
+ *
+ * IMPROVEMENTS:
+ * -> Implement ISR (Incremental Static Regeneration) if dynamic content is added.
+ *
+ * STATUS:
+ * -> Stable
+ *
+ * ============================================================================
+
  * 
  * Estrutura:
- * Compõe todas as seções principais (Hero, About, Works, Contact) em uma única página scrollável.
- * Cada seção possui seu próprio ID para navegação via âncoras (Smooth Scroll).
+ * Compõe todas as seções principais(Hero, About, Works, Contact) em uma única página scrollável.
+ * Cada seção possui seu próprio ID para navegação via âncoras(Smooth Scroll).
  */
 
 import { Hero } from "@/ui/public/sections/hero/Hero";

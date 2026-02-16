@@ -1,7 +1,38 @@
 /**
- * @file file-upload.ts
- * @description Secure file upload validation.
- * @author Senior Engineer Logic
+ * ============================================================================
+ * FILE: file-upload.ts
+ * LAYER: core
+ * TYPE: protection
+ * ============================================================================
+ *
+ * PURPOSE:
+ * -> Validate uploaded files for security risks (MIME type, size).
+ * -> Prevent malicious file uploads (e.g., executables, massive files).
+ *
+ * RESPONSIBILITY:
+ * -> Enforce file size limits.
+ * -> Enforce allowed MIME types whitelist.
+ *
+ * ARCHITECTURE POSITION:
+ * -> Used by API Routes handling file uploads.
+ *
+ * DATA FLOW:
+ * -> File Object -> [Validation Logic] -> Boolean/Error.
+ *
+ * SECURITY:
+ * -> CRITICAL: Prevents server compromise via webshells or DoS (disk filling).
+ *
+ * PERFORMANCE:
+ * -> Fast metadata checks.
+ *
+ * IMPROVEMENTS:
+ * -> Add Magic Byte inspection for true file type detection.
+ * -> Scan for malware (ClamAV integration).
+ *
+ * STATUS:
+ * -> Stable
+ *
+ * ============================================================================
  */
 
 const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png', 'application/pdf'];

@@ -1,7 +1,37 @@
 /**
- * @file xss.ts
- * @description Cross-Site Scripting protection utilities.
- * @author Senior Engineer Logic
+ * ============================================================================
+ * FILE: xss.ts
+ * LAYER: core
+ * TYPE: protection
+ * ============================================================================
+ *
+ * PURPOSE:
+ * -> Provide utilities to sanitize input against Cross-Site Scripting (XSS).
+ * -> Recursively clean objects and strings.
+ *
+ * RESPONSIBILITY:
+ * -> Detect and escape dangerous characters in user input.
+ * -> Serve as a middleware utility for payload sanitization.
+ *
+ * ARCHITECTURE POSITION:
+ * -> Used by Middleware and Validation layers.
+ *
+ * DATA FLOW:
+ * -> Dirty Input -> [Recursion + Escape] -> Clean Input.
+ *
+ * SECURITY:
+ * -> CRITICAL: Prevents attackers from injecting malicious scripts.
+ *
+ * PERFORMANCE:
+ * -> Recursive, so depth must be limited (though JSON bodies are usually shallow).
+ *
+ * IMPROVEMENTS:
+ * -> Integrate DOMPurify for HTML content if rich text is allowed.
+ *
+ * STATUS:
+ * -> Stable
+ *
+ * ============================================================================
  */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 

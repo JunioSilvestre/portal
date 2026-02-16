@@ -1,7 +1,39 @@
 /**
- * @file hashing.ts
- * @description Secure hashing utilities (bcrypt wrapper).
- * @author Senior Engineer Logic
+ * ============================================================================
+ * FILE: hashing.ts
+ * LAYER: core
+ * TYPE: util
+ * ============================================================================
+ *
+ * PURPOSE:
+ * -> Provide one-way hashing functions for passwords and sensitive data.
+ * -> Abstract the underlying hashing algorithm (bcrypt).
+ *
+ * RESPONSIBILITY:
+ * -> Hash passwords before storage.
+ * -> Compare plaintext passwords against stored hashes.
+ *
+ * ARCHITECTURE POSITION:
+ * -> Used by User service during registration and login.
+ *
+ * DATA FLOW:
+ * -> Plaintext -> [Hash Function] -> Hash String.
+ *
+ * SECURITY:
+ * -> CRITICAL: Protects user credentials.
+ * -> Must use sufficient salt rounds (defined in constants).
+ *
+ * PERFORMANCE:
+ * -> CPU intensive by design (to slow down brute-force attacks).
+ * -> Should be async/non-blocking where possible.
+ *
+ * IMPROVEMENTS:
+ * -> Upgrade to Argon2 for better resistance to GPU cracking.
+ *
+ * STATUS:
+ * -> Stable
+ *
+ * ============================================================================
  */
 
 // import { SECURITY_CONSTANTS } from '../config/constants';

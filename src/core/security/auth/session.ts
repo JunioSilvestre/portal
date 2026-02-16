@@ -1,7 +1,38 @@
 /**
- * @file session.ts
- * @description Session handling logic (Redis/Database).
- * @author Senior Engineer Logic
+ * ============================================================================
+ * FILE: session.ts
+ * LAYER: core
+ * TYPE: service
+ * ============================================================================
+ *
+ * PURPOSE:
+ * -> Manage user sessions (server-side state or abstraction).
+ * -> track active user sessions, devices, and IP addresses.
+ *
+ * RESPONSIBILITY:
+ * -> Create new sessions upon login.
+ * -> Invalidate sessions upon logout.
+ * -> Prune expired sessions.
+ *
+ * ARCHITECTURE POSITION:
+ * -> Abstraction layer over Redis or Database session store.
+ *
+ * DATA FLOW:
+ * -> Login -> Create Session -> Return Session ID.
+ *
+ * SECURITY:
+ * -> CRITICAL: Ensures session fixation protection and secure storage.
+ *
+ * PERFORMANCE:
+ * -> Should use high-performance store like Redis for low latency.
+ *
+ * IMPROVEMENTS:
+ * -> Implement detailed device fingerprinting.
+ *
+ * STATUS:
+ * -> Stable (Mock Implementation)
+ *
+ * ============================================================================
  */
 
 import { Session } from '../types/auth.types';

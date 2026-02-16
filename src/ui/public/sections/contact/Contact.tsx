@@ -1,12 +1,39 @@
 /**
- * @file Contact.tsx
- * @description Componente da Seção Contato (Formulário + Info).
- * @author Senior Engineer Logic
- * 
- * Funcionalidades:
- * 1. Formulário Interativo: Campos controlados para captura de leads.
- * 2. Layout Assimétrico: Informações à esquerda, formulário à direita.
- * 3. Validação Básica: HTML5 required attributes.
+ * ============================================================================
+ * FILE: Contact.tsx
+ * LAYER: ui
+ * TYPE: component
+ * ============================================================================
+ *
+ * PURPOSE:
+ * -> Facilitate user communication and lead generation.
+ * -> Provide contact information (Email, Map, etc.).
+ *
+ * RESPONSIBILITY:
+ * -> Render contact form.
+ * -> Validate user input locally.
+ * -> Handle form submission.
+ *
+ * ARCHITECTURE POSITION:
+ * -> Landing Page Section (usually last).
+ *
+ * DATA FLOW:
+ * -> User Input -> State -> Validation -> API Call.
+ *
+ * SECURITY:
+ * -> CRITICAL: Input must be sanitized (even on client) to prevent self-XSS logic errors.
+ * -> Rate limiting on submission endpoint.
+ *
+ * PERFORMANCE:
+ * -> Form state management (controlled components).
+ *
+ * IMPROVEMENTS:
+ * -> Add hCaptcha/reCAPTCHA.
+ *
+ * STATUS:
+ * -> Stable
+ *
+ * ============================================================================
  */
 
 'use client';

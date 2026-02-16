@@ -1,12 +1,39 @@
 /**
- * @file Hero.tsx
- * @description Componente da Seção Hero (Corporate Finance Style).
- * @author Senior Engineer Logic
- * 
- * Atualizações:
- * 1. Conteúdo focado em "Assessoria Financeira".
- * 2. Visual corporativo com cards brancos e métricas de impacto.
- * 3. Elementos de confiança (CVM, SOC2).
+ * ============================================================================
+ * FILE: Hero.tsx
+ * LAYER: ui
+ * TYPE: component
+ * ============================================================================
+ *
+ * PURPOSE:
+ * -> First Impression / Above-the-fold content.
+ * -> Communicate value proposition (Corporate Finance).
+ * -> Drive conversion (Call to Action).
+ *
+ * RESPONSIBILITY:
+ * -> Render headline, subheadline, and primary CTA.
+ * -> Display trust signals (metrics, badges).
+ *
+ * ARCHITECTURE POSITION:
+ * -> First section of the Landing Page.
+ *
+ * DATA FLOW:
+ * -> Static Content -> Render.
+ *
+ * SECURITY:
+ * -> Public component.
+ *
+ * PERFORMANCE:
+ * -> Critical for LCP (Largest Contentful Paint).
+ * -> Should use optimized images (next/image).
+ *
+ * IMPROVEMENTS:
+ * -> A/B testing support for headlines.
+ *
+ * STATUS:
+ * -> Stable
+ *
+ * ============================================================================
  */
 
 'use client';

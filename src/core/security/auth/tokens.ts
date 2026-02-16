@@ -1,7 +1,41 @@
 /**
- * @file tokens.ts
- * @description JWT generation and verification logic.
- * @author Senior Engineer Logic
+ * ============================================================================
+ * FILE: tokens.ts
+ * LAYER: core
+ * TYPE: util
+ * ============================================================================
+ *
+ * PURPOSE:
+ * -> Manage JSON Web Token (JWT) lifecycle.
+ * -> Generate Access and Refresh tokens.
+ * -> Verify token validity and signature.
+ *
+ * RESPONSIBILITY:
+ * -> Issue secure, signed tokens for authenticated users.
+ * -> Parse and validate incoming tokens from requests.
+ *
+ * ARCHITECTURE POSITION:
+ * -> Core authentication logic used by login services and middleware.
+ *
+ * DATA FLOW:
+ * -> User Payload -> [Sign] -> JWT String.
+ * -> JWT String -> [Verify] -> User Payload / Error.
+ *
+ * SECURITY:
+ * -> CRITICAL: The bedrock of stateless authentication.
+ * -> Must ensure secrets are never exposed.
+ * -> Tokens must have expiration times.
+ *
+ * PERFORMANCE:
+ * -> fast signing/verifying using 'jsonwebtoken' or 'jose'.
+ *
+ * IMPROVEMENTS:
+ * -> Implement token rotation and revocation lists (blacklisting).
+ *
+ * STATUS:
+ * -> Stable
+ *
+ * ============================================================================
  */
 
 // import { SECURITY_CONSTANTS } from '../config/constants';

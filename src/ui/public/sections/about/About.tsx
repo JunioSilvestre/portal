@@ -1,12 +1,37 @@
 /**
- * @file About.tsx
- * @description Componente da Seção Sobre Nós (Refinado).
- * @author Senior Engineer Logic
- * 
- * Atualizações:
- * 1. Cards "Ricos" com mini-gráficos e tabelas visuais CSS.
- * 2. Layout mais compacto e denso.
- * 3. Foco em "Data-Driven" visuals.
+ * ============================================================================
+ * FILE: About.tsx
+ * LAYER: ui
+ * TYPE: component
+ * ============================================================================
+ *
+ * PURPOSE:
+ * -> Provide company context, history, and mission.
+ * -> Build authority through data-driven visuals.
+ *
+ * RESPONSIBILITY:
+ * -> Render content cards and charts.
+ * -> Present text information clearly.
+ *
+ * ARCHITECTURE POSITION:
+ * -> Landing Page Section (usually 2nd or 3rd).
+ *
+ * DATA FLOW:
+ * -> Static Content -> Render.
+ *
+ * SECURITY:
+ * -> Public component.
+ *
+ * PERFORMANCE:
+ * -> Contains complex DOM structure (charts/tables), ensure efficient rendering.
+ *
+ * IMPROVEMENTS:
+ * -> Animate elements on scroll entry.
+ *
+ * STATUS:
+ * -> Stable
+ *
+ * ============================================================================
  */
 
 'use client';

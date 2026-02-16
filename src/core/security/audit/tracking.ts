@@ -1,7 +1,37 @@
 /**
- * @file tracking.ts
- * @description User activity tracking logic.
- * @author Senior Engineer Logic
+ * ============================================================================
+ * FILE: tracking.ts
+ * LAYER: core
+ * TYPE: service
+ * ============================================================================
+ *
+ * PURPOSE:
+ * -> High-level abstraction for tracking user activity and business events.
+ * -> Bridge between application logic and audit logging.
+ *
+ * RESPONSIBILITY:
+ * -> Offer simple API (trackActivity) for business logic.
+ * -> Enforce context requirements.
+ *
+ * ARCHITECTURE POSITION:
+ * -> Used by Feature Modules (e.g., "User updated profile").
+ *
+ * DATA FLOW:
+ * -> App Action -> tracking.ts -> logger.ts -> Output.
+ *
+ * SECURITY:
+ * -> Ensures accountability for user actions.
+ *
+ * PERFORMANCE:
+ * -> Minimal wrapper around logger.
+ *
+ * IMPROVEMENTS:
+ * -> Add batching for high-volume events.
+ *
+ * STATUS:
+ * -> Stable
+ *
+ * ============================================================================
  */
 
 import { logSecurityEvent } from './logger';

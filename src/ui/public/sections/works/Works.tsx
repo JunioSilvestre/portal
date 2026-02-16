@@ -1,12 +1,38 @@
 /**
- * @file Works.tsx
- * @description Componente da Seção Works (Portfólio).
- * @author Senior Engineer Logic
- * 
- * Funcionalidades:
- * 1. Filtro de Categorias: Permite filtrar projetos (Web App, Mobile, Landing Page, etc.).
- * 2. Animação de Layout: Cards se reorganizam suavemente ao filtrar (Layout Animation).
- * 3. Hover Effects: Detalhes aparecem ao passar o mouse.
+ * ============================================================================
+ * FILE: Works.tsx
+ * LAYER: ui
+ * TYPE: component
+ * ============================================================================
+ *
+ * PURPOSE:
+ * -> Showcase portfolio/projects to demonstrate expertise.
+ * -> Allow users to filter/explore past work.
+ *
+ * RESPONSIBILITY:
+ * -> Render grid of project cards.
+ * -> Handle filtering logic (Category selection).
+ *
+ * ARCHITECTURE POSITION:
+ * -> Landing Page Section.
+ *
+ * DATA FLOW:
+ * -> Project Data Array -> Filter Logic -> Filtered Array -> Render.
+ *
+ * SECURITY:
+ * -> Public component.
+ *
+ * PERFORMANCE:
+ * -> Filter operations on client-side (small dataset).
+ * -> Use layout animations (Framer Motion) carefully.
+ *
+ * IMPROVEMENTS:
+ * -> Pagination if project list grows large.
+ *
+ * STATUS:
+ * -> Stable
+ *
+ * ============================================================================
  */
 
 'use client';

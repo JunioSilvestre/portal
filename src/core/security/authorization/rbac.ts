@@ -1,7 +1,40 @@
 /**
- * @file rbac.ts
- * @description Role-Based Access Control logic.
- * @author Senior Engineer Logic
+ * ============================================================================
+ * FILE: rbac.ts
+ * LAYER: core
+ * TYPE: service
+ * ============================================================================
+ *
+ * PURPOSE:
+ * -> Implement Role-Based Access Control reasoning.
+ * -> Decide if a user with Role X can perform Action Y on Resource Z.
+ *
+ * RESPONSIBILITY:
+ * -> Map Roles to a set of Permissions.
+ * -> Evaluate permission requests against the mapping.
+ *
+ * ARCHITECTURE POSITION:
+ * -> The central Authorization Engine.
+ * -> Called by Middleware, API Routes, and Directives.
+ *
+ * DATA FLOW:
+ * -> (UserRole, RequiredPermission) -> [Logic] -> Boolean.
+ *
+ * SECURITY:
+ * -> CRITICAL: The Gatekeeper. Bugs here lead to privilege escalation.
+ *
+ * PERFORMANCE:
+ * -> Must be extremely fast as it runs frequently (directives, route guards).
+ * -> Uses array lookups (optimize to Set for large permission sets).
+ *
+ * IMPROVEMENTS:
+ * -> Cache permissions per role to avoid re-calculation.
+ * -> Support "Deny" permissions (exceptions).
+ *
+ * STATUS:
+ * -> Stable
+ *
+ * ============================================================================
  */
 
 import { UserRole, Permission } from '../types/security.types';

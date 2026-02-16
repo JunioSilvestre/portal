@@ -1,12 +1,37 @@
 /**
- * @file Footer.tsx
- * @description Componente Principal do Rodapé (Footer).
- * @author Senior Engineer Logic
- * 
- * Funcionalidades:
- * 1. Orquestração: Renderiza versões Desktop e Mobile.
- * 2. Lógica de Negócio: Obtém o ano atual via hook `useFooter`.
- * 3. Separação de Responsabilidades: O visual fica nos sub-componentes.
+ * ============================================================================
+ * FILE: Footer.tsx
+ * LAYER: ui
+ * TYPE: component
+ * ============================================================================
+ *
+ * PURPOSE:
+ * -> Display site footer with global links and copyright.
+ * -> Ensure consistent branding at the bottom of every page.
+ *
+ * RESPONSIBILITY:
+ * -> Render Desktop/Mobile variants.
+ * -> specific logic (e.g., dynamic year).
+ *
+ * ARCHITECTURE POSITION:
+ * -> Placed at the bottom of the root layout.
+ *
+ * DATA FLOW:
+ * -> Static Content -> Render.
+ *
+ * SECURITY:
+ * -> Public component, low risk.
+ *
+ * PERFORMANCE:
+ * -> Static rendering mostly.
+ *
+ * IMPROVEMENTS:
+ * -> Add newsletter subscription form integration.
+ *
+ * STATUS:
+ * -> Stable
+ *
+ * ============================================================================
  */
 
 'use client';

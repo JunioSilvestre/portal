@@ -1,7 +1,38 @@
 /**
- * @file providers.ts
- * @description OAuth Provider configuration and logic.
- * @author Senior Engineer Logic
+ * ============================================================================
+ * FILE: providers.ts
+ * LAYER: core
+ * TYPE: config
+ * ============================================================================
+ *
+ * PURPOSE:
+ * -> Configuration for OAuth providers (Google, GitHub, etc.).
+ * -> Centralize Client IDs and Secrets.
+ *
+ * RESPONSIBILITY:
+ * -> Store provider-specific settings.
+ * -> Map environment variables to configuration objects.
+ *
+ * ARCHITECTURE POSITION:
+ * -> Consumed by Auth handling services (e.g., NextAuth or custom OAuth logic).
+ *
+ * DATA FLOW:
+ * -> Env Vars -> Config Object -> Auth Service.
+ *
+ * SECURITY:
+ * -> CRITICAL: Contains sensitive credentials (via env vars).
+ * -> Ensure secrets are never exposed to the client bundle.
+ *
+ * PERFORMANCE:
+ * -> Static configuration.
+ *
+ * IMPROVEMENTS:
+ * -> Add support for more providers dynamically.
+ *
+ * STATUS:
+ * -> Stable
+ *
+ * ============================================================================
  */
 
 export const AUTH_PROVIDERS = {

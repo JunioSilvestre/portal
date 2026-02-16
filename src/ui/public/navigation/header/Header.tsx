@@ -1,18 +1,41 @@
 /**
- * @file Header.tsx
- * @description Componente Principal do Cabeçalho (Header).
- * @author Senior Engineer Logic
- * 
- * Este componente atua como o "Container" ou "Orquestrador" da navegação.
- * Ele não contém toda a lógica visual, mas decide O QUE mostrar e QUANDO.
- * 
- * Funcionalidades:
- * 1. Gerencia o estado de scroll (rolagem) para mudar o estilo do cabeçalho.
- * 2. Gerencia o estado do menu mobile (aberto/fechado).
- * 3. Renderiza a versão Desktop ou Mobile dependendo do tamanho da tela (via CSS).
- * 
- * @library next/link - Componente otimizado do Next.js para navegação entre páginas sem recarregar (SPA).
- * @library @/lib/utils - Utilitário 'cn' (clsx + tailwind-merge) para combinar classes CSS condicionalmente.
+ * ============================================================================
+ * FILE: Header.tsx
+ * LAYER: ui
+ * TYPE: component
+ * ============================================================================
+ *
+ * PURPOSE:
+ * -> Main Navigation Orchestrator.
+ * -> Swaps between Desktop and Mobile views based on viewport.
+ * -> Manages visual state transitions (scroll effect).
+ *
+ * RESPONSIBILITY:
+ * -> Render the site header.
+ * -> Coordinate specific logic like "scrolled" state.
+ * -> Contain the Logo and Navigation Links.
+ *
+ * ARCHITECTURE POSITION:
+ * -> Placed at the top of the root layout.
+ * -> Parent to Header.desktop and Header.mobile.
+ *
+ * DATA FLOW:
+ * -> Window Scroll Event -> useHeader Hook -> State -> UI Style Change.
+ *
+ * SECURITY:
+ * -> Public component, no specific security risks.
+ *
+ * PERFORMANCE:
+ * -> Uses scroll listener (throttled in useHeader) to prevent layout thrashing.
+ * -> "use client" directive required for event listeners.
+ *
+ * IMPROVEMENTS:
+ * -> Add mega-menu support if navigation grows.
+ *
+ * STATUS:
+ * -> Stable
+ *
+ * ============================================================================
  */
 
 'use client'; // Diretiva do Next.js para indicar que este componente roda no navegador (tem interatividade/hooks).

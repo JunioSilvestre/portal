@@ -1,8 +1,40 @@
 /**
- * @file crypto.ts
- * @description Symmetric encryption/decryption utilities using Node.js crypto.
- * @author Senior Engineer Logic
+ * ============================================================================
+ * FILE: crypto.ts
+ * LAYER: core
+ * TYPE: util
+ * ============================================================================
+ *
+ * PURPOSE:
+ * -> Symmetric encryption/decryption utilities using Node.js crypto.
+ * -> Securely store sensitive data (PII, tokens) in the database.
+ *
+ * RESPONSIBILITY:
+ * -> Encrypt data with a secret key.
+ * -> Decrypt data back to plaintext.
+ *
+ * ARCHITECTURE POSITION:
+ * -> Used by data access layers when reading/writing sensitive fields.
+ *
+ * DATA FLOW:
+ * -> Plaintext -> [AES-256-CBC] -> Ciphertext.
+ *
+ * SECURITY:
+ * -> CRITICAL: Relies on the secrecy of the encryption key.
+ * -> Uses IVs to ensure same plaintext yields different ciphertext.
+ *
+ * PERFORMANCE:
+ * -> Fast symmetric encryption.
+ *
+ * IMPROVEMENTS:
+ * -> Implement key rotation strategy.
+ *
+ * STATUS:
+ * -> Stable
+ *
+ * ============================================================================
  */
+
 
 import crypto from 'crypto';
 

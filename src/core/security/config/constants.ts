@@ -4,6 +4,41 @@
  * @author Senior Engineer Logic
  */
 
+/**
+ * ============================================================================
+ * FILE: constants.ts
+ * LAYER: core
+ * TYPE: config
+ * ============================================================================
+ *
+ * PURPOSE:
+ * -> Centralize security-related constants (timeouts, max lengths, salt rounds).
+ * -> Eliminate magic numbers in the codebase.
+ *
+ * RESPONSIBILITY:
+ * -> Single source of truth for configuration values.
+ *
+ * ARCHITECTURE POSITION:
+ * -> Imported by auth, encryption, and validation modules.
+ *
+ * DATA FLOW:
+ * -> Static constants consumed by various logic layers.
+ *
+ * SECURITY:
+ * -> Defines critical constraints like password length and token expiry.
+ *
+ * PERFORMANCE:
+ * -> Zero runtime overhead (compile-time constants).
+ *
+ * IMPROVEMENTS:
+ * -> Could be moved to environment variables for greater flexibility.
+ *
+ * STATUS:
+ * -> Stable
+ *
+ * ============================================================================
+ */
+
 export const SECURITY_CONSTANTS = {
     BCRYPT_ROUNDS: 12,
     SESSION_MAX_AGE: 60 * 60 * 24 * 7, // 7 days

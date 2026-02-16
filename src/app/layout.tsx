@@ -1,18 +1,51 @@
 /**
- * @file layout.tsx
- * @description Layout Raiz (Root Layout) da Aplicação.
- * @author Senior Engineer Logic
- * 
- * O que é um Layout no Next.js?
- * É a "casca" da aplicação. Ele define a estrutura HTML que se repete em TODAS as páginas (<html>, <body>).
- * Aqui é onde configuramos fontes globais, metadados de SEO e Providers (Context API).
- * 
- * Funcionalidades:
- * 1. Configuração de Fontes (Next/Font) para performance.
- * 2. Definição de Metadados (Título, Descrição) para SEO.
- * 3. Envolve toda a aplicação com "Providers" (Tema, Contextos).
- * 4. Renderiza o Cabeçalho (Header) fixo.
- */
+ * ============================================================================
+ * FILE: layout.tsx
+ * LAYER: app
+ * TYPE: layout
+ * ============================================================================
+ *
+ * PURPOSE:
+ * -> Root Layout (The Shell) of the application.
+ * -> Define the <html> and <body> structure shared by all pages.
+ *
+ * RESPONSIBILITY:
+ * -> Inject global fonts (Geist, Inter).
+ * -> Apply global CSS (Tailwind).
+ * -> Provide React Contexts (Theme, Auth, etc.) if needed.
+ * -> Render the site-wide Header and Footer.
+ *
+ * ARCHITECTURE POSITION:
+ * -> Top-level wrapper for the entire Next.js app.
+ *
+ * DATA FLOW:
+ * -> Props (children) -> Render Wrapper -> Render Children.
+ *
+ * SECURITY:
+ * -> CSP (Content Security Policy) headers are typically injected here or in middleware.
+ *
+ * PERFORMANCE:
+ * -> Must be lightweight.
+ * -> Fonts should be optimized (next/font).
+ *
+ * IMPROVEMENTS:
+ * -> Add OpenGraph/Twitter metadata for SEO.
+ *
+ * STATUS:
+ * -> Stable
+ *
+ * ============================================================================
+ 
+ * O que é um Layout no Next.js ?
+ * É a "casca" da aplicação.Ele define a estrutura HTML que se repete em TODAS as páginas (<html>, <body>).
+  * Aqui é onde configuramos fontes globais, metadados de SEO e Providers (Context API).
+  *
+  * Funcionalidades:
+  * 1. Configuração de Fontes (Next/Font) para performance.
+  * 2. Definição de Metadados (Título, Descrição) para SEO.
+  * 3. Envolve toda a aplicação com "Providers" (Tema, Contextos).
+  * 4. Renderiza o Cabeçalho (Header) fixo.
+  */
 
 import type { Metadata } from "next";
 import localFont from "next/font/local"; // Otimização de fontes locais (sem requisições externas ao Google Fonts)
